@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetCare - Login Prestador de Serviços</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <!-- Lado Esquerdo (Identidade Visual) -->
+        <section class="left-panel">
+            <div class="brand">
+                <img src="../../imgs/logoIMG/logo.png" alt="Logo PetCare" class="logo-img">
+                <h1><span class="cor-pet">Pet</span><span class="cor-care">Care</span></h1>
+            </div>
+            <p class="slogan">
+                O melhor lugar para divulgar e gerenciar seus serviços pet, conectando você aos tutores da sua região.
+            </p>
+        </section>
+
+        <!-- Lado Direito (Formulário de Login) -->
+        <section class="right-panel">
+            <div class="form-box">
+                <h2>Acesso Parceiro Pet</h2>
+                <p class="subtitle">Entre com os dados do seu estabelecimento ou serviço</p>
+
+                <form id="form-login-servico">
+                    <div class="input-group">
+                        <label for="login-email">E-mail Comercial</label>
+                        <input type="email" id="login-email" placeholder="contato@suaclinica.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="login-senha">Senha</label>
+                        <input type="password" id="login-senha" placeholder="Digite sua senha" required>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Entrar como Prestador</button>
+                </form>
+
+                <div class="links-footer">
+                    <p>Ainda não é parceiro? <a href="../cadastro/index.html">Cadastrar meu serviço</a></p>
+                    <p class="link-tutor"><a href="../../login/index.html">Voltar para o login de Tutor(a)</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

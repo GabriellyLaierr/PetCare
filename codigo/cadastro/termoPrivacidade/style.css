@@ -1,0 +1,133 @@
+:root {
+    --corPet: #2E5A44;
+    --corCare: #FF7A3B;
+    --corVerdeEscuro: #214332;
+    --corFundo: #F4F7F5;
+    --corCadastro: #366E70;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+body {
+    background-color: var(--corFundo);
+    color: var(--corVerdeEscuro);
+    line-height: 1.6;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* HEADER */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #D5EBD9;
+    padding-bottom: 20px;
+}
+
+/* LOGO + PETCARE */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 0;
+    margin-bottom: 12px;
+    padding: 0;
+}
+
+
+#img-logo {
+    display: block;
+    height: 100px;
+    width: auto;
+    object-fit: contain;
+    margin: 0 -55px 0 0;
+    flex-shrink: 0;
+}
+
+.logo-container h1 {
+    font-size: 2.2rem;
+    line-height: 1;
+    margin: 0;
+    font-weight: 800;
+}
+
+/* SUBTÍTULO */
+.subtitulo-termos {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--corVerdeEscuro);
+    margin: 0;
+    text-align: center;
+}
+
+/* CORES DA MARCA */
+.cor-pet {
+    color: var(--corPet);
+}
+
+.cor-care {
+    color: var(--corCare);
+}
+
+/* TÍTULOS */
+h2 {
+    font-size: 1.4rem;
+    color: var(--corPet);
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+/* PARÁGRAFOS */
+p {
+    margin-bottom: 12px;
+    color: #444;
+    font-size: 0.95rem;
+}
+
+/* LISTAS */
+ul {
+    margin-left: 20px;
+    margin-bottom: 15px;
+    color: #444;
+    font-size: 0.95rem;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+/* BOTÃO VOLTAR / FECHAR */
+.btn-voltar {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 25px;
+    background-color: var(--corCadastro);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.btn-voltar:hover {
+    opacity: 0.9;
+}

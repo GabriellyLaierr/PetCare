@@ -1,0 +1,207 @@
+:root{
+    /* Textos */
+    /*Pet */
+    --corPet: #2E5A44;
+    --corCare: #FF7A3B;
+    --corVerdeEscuro: #214332;
+    --corCadastro: #366E70;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+body{
+    display: flex; 
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+/* Cor container esquerdo */
+#container-esquerdo , #container-direito{  
+    flex: 1;                    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 60px;
+    min-height: 100vh;
+    
+}
+
+#container-esquerdo{
+    background-color: #D5EBD9; 
+}
+
+/*Tamanho da imagem */
+#img-logo{
+    width: auto;
+    height: 125px;
+    margin-right: -75px;
+}
+
+/*PetCare tamnho e cor*/
+h1{
+    font-size: 3.2rem;
+}
+
+.cor-pet{
+    color: var(--corPet);
+}
+
+.cor-care{
+    color: var(--corCare);
+}
+
+/*Logo e imagem */
+#topo-esquerdo{
+    width: 100%;
+    display: flex;          
+    align-items: center;    
+    justify-content: center;   
+    margin-bottom: 15px;  
+    height: 60px;  
+}
+
+/* Garante que o h1 e a imagem não tenham margens invisíveis */
+#topo-esquerdo h1 {
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    font-size: 2.8rem;
+    margin-right: 125px;
+
+}
+
+/*Tamanho imagem animais*/
+#img-animais{
+    max-width: 100%;
+    height: 300px;
+    margin-bottom: 15px;       
+}
+
+/*bem-vindo*/
+#container-esquerdo h2{
+    color: var(--corVerdeEscuro);
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 15px; 
+}
+/*Tag p */
+#container-esquerdo p{
+    color: var(--corVerdeEscuro);
+    line-height: 1.6;          
+    max-width: 280px;          
+    margin: 0 auto;            
+    text-align: center;
+}
+
+
+/* Cor container direito */
+#container-direito{  
+    background-color: #F4F7F5; 
+}
+
+/* Garante que o h1 e a imagem não tenham margens invisíveis */
+#topo-direito h1 {
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 12px;    
+    padding: 0;
+    margin: 0;
+    height: 60px;
+    color: var(--corVerdeEscuro);
+    font-size: 2.8rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+#topo-direito p{
+    color: var(--corVerdeEscuro);
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 30px;   
+
+}
+
+#topo-direito a{
+    color: var(--corCadastro);
+    text-decoration: none;
+}
+
+#formulario{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-group input{
+    width: 300px;
+    height: 45px;
+
+    border-radius: 50px ;
+    border: 1px solid var(--corCadastro);
+    padding: 10px 20px; 
+    outline: none;
+}
+
+#termos-uso{
+    color: var(--corVerdeEscuro);
+    padding: 20px;
+}
+
+#termos-uso a{
+    color: var(--corCadastro);
+    text-decoration: none;
+}
+
+#cadastrar{
+    color: white;
+    background-color: #FE802C;
+
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 225px;
+
+    border-radius: 50px ;
+    border: none;
+    cursor: pointer;
+
+
+}
+
+.container-botao {
+    display: flex;
+    justify-content: center; 
+    width: 100%;            
+    margin-top: 20px;     
+}
+
+#cadastrar:active {
+    transform: translateY(1px); 
+}
+
+/*Prestador de Serviço */
+.link-prestador {
+    text-align: center;
+    margin-top: 12px;
+}
+
+.link-prestador a {
+    color: #366E70;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.link-prestador a:hover {
+    opacity: 0.8;
+}

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetCare - Painel Principal</title>
+
+    <!-- Fonte Nunito -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Ícones FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        <!-- BARRA LATERAL ESQUERDA -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../imgs/logoIMG/logo.png" alt="Logo PetCare" class="logo-img">
+                <h1><span class="cor-pet">Pet</span><span class="cor-care">Care</span></h1>
+            </div>
+
+            <!-- Seleção de Pets (Avatares Redondos + Botão +) -->
+            <div class="pet-selector-section">
+                <span class="section-label">Seleção pet:</span>
+                <div class="pets-carousel" id="lista-pets-sidebar">
+                    <button type="button" class="btn-add-pet" id="btn-abrir-modal-pet" title="Cadastrar novo pet">
+                        <span class="avatar-circle add-circle"><i class="fa-solid fa-plus"></i></span>
+                        <span>Cadastrar</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menu de Navegação Principal -->
+            <nav class="sidebar-nav">
+                <button type="button" class="nav-item active" data-target="sec-meu-pet">
+                    <i class="fa-solid fa-paw"></i> Meu Pet
+                </button>
+                <button type="button" class="nav-item" data-target="sec-historico">
+                    <i class="fa-solid fa-heart-pulse"></i> Histórico de Saúde
+                </button>
+                <button type="button" class="nav-item" data-target="sec-vacinas">
+                    <i class="fa-solid fa-syringe"></i> Vacinas
+                </button>
+                <button type="button" class="nav-item" data-target="sec-medicamentos">
+                    <i class="fa-solid fa-pills"></i> Medicamentos
+                </button>
+                <button type="button" class="nav-item" data-target="sec-notificacoes">
+                    <i class="fa-solid fa-bell"></i> Notificações
+                </button>
+                
+                <div class="nav-divider"></div>
+
+                <button type="button" class="nav-item" data-target="sec-servicos">
+                    <i class="fa-solid fa-location-dot"></i> Encontrar Serviços Pet
+                </button>
+                <button type="button" class="nav-item" data-target="sec-configuracoes">
+                    <i class="fa-solid fa-gear"></i> Configurações
+                </button>
+            </nav>
+        </aside>
+
+        <!-- ÁREA PRINCIPAL DIREITA -->
+        <div class="main-wrapper">
+            <!-- Barra Superior (Header do Usuário) -->
+            <header class="topbar">
+                <div class="topbar-title" id="titulo-pagina">Meu Pet</div>
+                
+                <div class="topbar-actions">
+                    <!-- Menu Perfil Superior Direito -->
+                    <div class="user-menu-container">
+                        <button type="button" class="user-profile-btn" id="btn-menu-usuario">
+                            <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Foto Usuário" id="header-user-avatar" class="avatar-round-sm">
+                            <span id="header-user-name">Tutor(a)</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        
+                        <div class="user-dropdown" id="user-dropdown">
+                            <button type="button" id="drop-config"><i class="fa-solid fa-user-gear"></i> Configurações da Conta</button>
+                            <a href="../cadastro/termoPrivacidade/index.html" target="_blank"><i class="fa-solid fa-file-contract"></i> Termos e Condições</a>
+                            <hr>
+                            <button type="button" id="btn-sair" class="text-danger"><i class="fa-solid fa-right-from-bracket"></i> Sair da Conta</button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- CONTEÚDO DINÂMICO DAS ABAS -->
+            <main class="content-area">
+
+                <!-- 1. ABA: MEU PET -->
+                <section id="sec-meu-pet" class="tab-section active">
+                    <div id="estado-sem-pet" class="empty-state">
+                        <i class="fa-solid fa-paw"></i>
+                        <h2>Nenhum pet cadastrado ainda</h2>
+                        <p>Clique no botão <strong>+</strong> no menu esquerdo para adicionar seu primeiro amigo!</p>
+                        <button type="button" class="btn-primary" id="btn-empty-add">Cadastrar Meu Primeiro Pet</button>
+                    </div>
+
+                    <div id="painel-pet-ativo" class="dashboard-grid" style="display: none;">
+                        <!-- Card Perfil do Pet -->
+                        <div class="card card-perfil">
+                            <div class="card-header-flex">
+                                <h3>Perfil do Pet</h3>
+                                <button type="button" class="btn-edit-icon" id="btn-editar-pet" title="Editar informações do pet">
+                                    <i class="fa-solid fa-pen"></i> Editar
+                                </button>
+                            </div>
+                            <div class="perfil-info-box">
+                                <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Foto Pet" id="view-pet-foto" class="avatar-round-lg">
+                                <div class="perfil-dados">
+                                    <h2 id="view-pet-nome">Nome do Pet</h2>
+                                    <p id="view-pet-raca-especie">Espécie • Raça</p>
+                                    <p id="view-pet-data">Nascimento: 00/00/0000</p>
+                                    <span class="badge" id="view-pet-castrado">Castrado</span>
+                                </div>
+                            </div>
+                            <div class="perfil-descricao">
+                                <strong>Observações / Descrição:</strong>
+                                <p id="view-pet-desc">Nenhuma observação cadastrada.</p>
+                            </div>
+                            <div class="perfil-exames-resumo">
+                                <strong>Exames Anexados / Registrados:</strong>
+                                <ul id="view-pet-exames-lista" class="exames-perfil-ul"></ul>
+                            </div>
+                        </div>
+
+                        <!-- Card Próximas Vacinas -->
+                        <div class="card">
+                            <h3>Próximas Vacinas</h3>
+                            <p class="subtitle">Prazos programados de retorno:</p>
+                            <div id="resumo-vacinas-lista" class="mini-list"></div>
+                        </div>
+
+                        <!-- Card Medicamentos -->
+                        <div class="card">
+                            <h3>Medicamentos em Uso</h3>
+                            <p class="subtitle">Controle de doses e horários:</p>
+                            <div id="resumo-medicamentos-lista" class="mini-list"></div>
+                        </div>
+
+                        <!-- Card Histórico Recente -->
+                        <div class="card full-width">
+                            <h3>Últimos Registros de Saúde</h3>
+                            <div id="resumo-historico-lista" class="timeline-horizontal"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. ABA: HISTÓRICO DE SAÚDE -->
+                <section id="sec-historico" class="tab-section">
+                    <div class="card">
+                        <h3>Adicionar Registro no Histórico de Saúde</h3>
+                        <form id="form-historico" class="grid-form">
+                            <div class="input-group">
+                                <label for="hist-tipo">Tipo de Registro</label>
+                                <select id="hist-tipo" required>
+                                    <option value="" disabled selected>Selecione o tipo de registro...</option>
+                                    <option value="Consulta Marcada">Consulta Marcada</option>
+                                    <option value="Exame Marcado">Exame Marcado</option>
+                                    <option value="Histórico / Doença">Histórico Clínico / Doença Anterior</option>
+                                </select>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="hist-data" class="label-with-tooltip">
+                                    <span>Data</span>
+                                    <span id="tooltip-hist-clinico" class="tooltip-icon" style="display: none;" title="Adicione a data de início do histórico clínico para controles futuros">?</span>
+                                </label>
+                                <input type="date" id="hist-data" required>
+                            </div>
+
+                            <div class="input-group" id="grupo-hist-hora">
+                                <label for="hist-hora">Horário</label>
+                                <input type="time" id="hist-hora" required>
+                            </div>
+
+                            <div class="input-group full-col">
+                                <label for="hist-descricao">Descrição (Ex: Check-up anual, Exame de sangue, Alergia...)</label>
+                                <input type="text" id="hist-descricao" placeholder="Descreva os detalhes..." required>
+                            </div>
+
+                            <div class="full-col">
+                                <button type="submit" class="btn-primary btn-fit">Salvar no Histórico</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="card mt-20">
+                        <h3>Linha do Tempo Completa</h3>
+                        <div id="lista-completa-historico" class="records-list"></div>
+                    </div>
+                </section>
+
+                <!-- 3. ABA: VACINAS -->
+                <section id="sec-vacinas" class="tab-section">
+                    <div class="card">
+                        <h3>Adicionar Vacina</h3>
+                        <form id="form-vacina" class="grid-form">
+                            <div class="input-group">
+                                <label for="vac-nome">Nome da Vacina</label>
+                                <input type="text" id="vac-nome" list="vacinas-salvas-datalist" placeholder="Ex: V10, Antirrábica..." required>
+                                <datalist id="vacinas-salvas-datalist">
+                                    <option value="V10 (Polivalente)">V10 (Polivalente)</option>
+                                    <option value="Antirrábica">Antirrábica</option>
+                                    <option value="Gripe Canina">Gripe Canina</option>
+                                    <option value="V4 / V5 (Felina)">V4 / V5 (Felina)</option>
+                                </datalist>
+                            </div>
+                            <div class="input-group">
+                                <label for="vac-data-aplicacao">Data que Tomou</label>
+                                <input type="date" id="vac-data-aplicacao" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="vac-proxima-data">Próxima Dose</label>
+                                <input type="date" id="vac-proxima-data" required>
+                            </div>
+                            <div class="full-col">
+                                <button type="submit" class="btn-primary btn-fit">Salvar Vacina</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="card mt-20">
+                        <h3>Carteira de Vacinação do Pet</h3>
+                        <div id="lista-completa-vacinas" class="records-list"></div>
+                    </div>
+                </section>
+
+                <!-- 4. ABA: MEDICAMENTOS -->
+                <section id="sec-medicamentos" class="tab-section">
+                    <div class="card">
+                        <h3>Adicionar Medicamento</h3>
+                        <form id="form-medicamento" class="grid-form-med">
+                            <div class="input-group">
+                                <label for="med-nome">Nome do Medicamento</label>
+                                <input type="text" id="med-nome" placeholder="Ex: Vermífugo, Antibiótico..." required>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="med-dose-qtd">Dosagem / Unidade</label>
+                                <div class="inline-inputs">
+                                    <input type="text" id="med-dose-qtd" placeholder="Ex: 1, 10..." required>
+                                    <select id="med-dose-tipo" aria-label="Unidade da dose">
+                                        <option value="Comprimido(s)">Comprimido(s)</option>
+                                        <option value="Gotas">Gotas</option>
+                                        <option value="ml">ml</option>
+                                        <option value="Dose única">Dose única</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="med-intervalo">Repetir a cada quantas horas?</label>
+                                <select id="med-intervalo">
+                                    <option value="Sem repetição em horas">Sem repetição em horas</option>
+                                    <option value="6 em 6 horas">6 em 6 horas</option>
+                                    <option value="8 em 8 horas">8 em 8 horas</option>
+                                    <option value="12 em 12 horas">12 em 12 horas</option>
+                                    <option value="24 em 24 horas (1x ao dia)">24 em 24 horas (1x ao dia)</option>
+                                </select>
+                            </div>
+
+                            <div class="input-group" id="grupo-med-proxima-data">
+                                <label for="med-proxima-data">Próxima Data para Repetir (Opcional)</label>
+                                <input type="date" id="med-proxima-data">
+                            </div>
+
+                            <div class="full-col">
+                                <button type="submit" class="btn-primary btn-fit">Salvar Medicamento</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="card mt-20">
+                        <h3>Medicamentos Cadastrados</h3>
+                        <div id="lista-completa-medicamentos" class="records-list"></div>
+                    </div>
+                </section>
+
+                <!-- 5. ABA: NOTIFICAÇÕES POR E-MAIL -->
+                <section id="sec-notificacoes" class="tab-section">
+                    <div class="card">
+                        <h3>Preferências de Lembretes por E-mail</h3>
+                        <p class="subtitle">Escolha quais alertas deseja receber no seu e-mail cadastrado e com quanto tempo de antecedência.</p>
+                        
+                        <form id="form-notificacoes" class="notif-settings-form">
+                            <div class="notif-row">
+                                <label class="switch-label" for="notif-vacinas">
+                                    <input type="checkbox" id="notif-vacinas" checked>
+                                    <span>Lembrete de Vacinas</span>
+                                </label>
+                                <select id="tempo-vacinas" aria-label="Antecedência para vacinas">
+                                    <option value="1 dia antes">1 dia antes</option>
+                                    <option value="3 dias antes" selected>3 dias antes</option>
+                                    <option value="7 dias antes">7 dias antes</option>
+                                </select>
+                            </div>
+
+                            <div class="notif-row">
+                                <label class="switch-label" for="notif-remedios">
+                                    <input type="checkbox" id="notif-remedios" checked>
+                                    <span>Lembrete de Medicamentos</span>
+                                </label>
+                                <select id="tempo-remedios" aria-label="Antecedência para medicamentos">
+                                    <option value="Na hora exata" selected>Na hora exata</option>
+                                    <option value="30 minutos antes">30 minutos antes</option>
+                                    <option value="1 hora antes">1 hora antes</option>
+                                </select>
+                            </div>
+
+                            <div class="notif-row">
+                                <label class="switch-label" for="notif-consultas">
+                                    <input type="checkbox" id="notif-consultas" checked>
+                                    <span>Consultas Marcadas</span>
+                                </label>
+                                <select id="tempo-consultas" aria-label="Antecedência para consultas">
+                                    <option value="1 dia antes" selected>1 dia antes</option>
+                                    <option value="2 dias antes">2 dias antes</option>
+                                    <option value="1 semana antes">1 semana antes</option>
+                                </select>
+                            </div>
+
+                            <div class="notif-row">
+                                <label class="switch-label" for="notif-exames">
+                                    <input type="checkbox" id="notif-exames" checked>
+                                    <span>Exames Marcados</span>
+                                </label>
+                                <select id="tempo-exames" aria-label="Antecedência para exames">
+                                    <option value="1 dia antes" selected>1 dia antes</option>
+                                    <option value="2 dias antes">2 dias antes</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <button type="submit" class="btn-primary btn-fit mt-20">Salvar Preferências de Notificação</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- 6. ABA: ENCONTRAR SERVIÇOS PET -->
+                <section id="sec-servicos" class="tab-section">
+                    <div class="card">
+                        <h3>Encontrar Serviços Pet Cadastrados</h3>
+                        <p class="subtitle">Selecione o tipo de serviço para visualizar os parceiros cadastrados no PetCare e seus endereços.</p>
+
+                        <form id="form-busca-servicos" class="grid-form">
+                            <div class="input-group">
+                                <label for="serv-tipo">Tipo de Serviço *</label>
+                                <select id="serv-tipo" required>
+                                    <option value="" disabled selected>Selecione o tipo de serviço...</option>
+                                    <option value="Veterinário">Veterinário / Clínica</option>
+                                    <option value="Farmácia Veterinária">Farmácia Veterinária</option>
+                                    <option value="Pet Shop">Pet Shop</option>
+                                </select>
+                            </div>
+
+                            <div class="full-col">
+                                <button type="submit" class="btn-primary btn-sm">Buscar Serviços</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Resultados da Busca -->
+                    <div id="resultados-servicos" class="services-grid mt-20"></div>
+                </section>
+
+                <!-- 7. ABA: CONFIGURAÇÕES DA CONTA -->
+                <section id="sec-configuracoes" class="tab-section">
+                    <div class="card">
+                        <h3>Configurações da Conta</h3>
+                        <form id="form-config-conta" class="config-form">
+                            <div class="user-avatar-upload">
+                                <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" id="config-preview-foto" class="avatar-round-lg" alt="Sua foto">
+                                <div>
+                                    <label for="config-foto-input" class="btn-secondary cursor-pointer">
+                                        <i class="fa-solid fa-camera"></i> Alterar Foto de Perfil
+                                    </label>
+                                    <input type="file" id="config-foto-input" accept="image/*" hidden>
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="config-nome">Seu Nome</label>
+                                <input type="text" id="config-nome" required>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="config-email">Alterar E-mail</label>
+                                <input type="email" id="config-email" required>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="config-senha">Nova Senha (deixe em branco para manter a atual)</label>
+                                <input type="password" id="config-senha" placeholder="Digite nova senha">
+                            </div>
+
+                            <div class="config-actions">
+                                <button type="submit" class="btn-primary">Salvar Alterações</button>
+                                <a href="../cadastro/termoPrivacidade/index.html" target="_blank" class="btn-outline">Ler Termos e Condições</a>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- MODAL: CADASTRAR / EDITAR PET -->
+    <div class="modal-overlay" id="modal-pet">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2 id="modal-pet-titulo">Cadastrar Novo Pet</h2>
+                <button type="button" class="btn-close-modal" id="btn-fechar-modal">&times;</button>
+            </div>
+
+            <form id="form-pet-modal" class="modal-form">
+                <input type="hidden" id="pet-id-edit">
+
+                <!-- Foto Redonda do Pet -->
+                <div class="pet-photo-upload">
+                    <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" id="modal-preview-pet" class="avatar-round-lg" alt="Foto do Pet">
+                    <label for="pet-foto-input" class="btn-secondary cursor-pointer">
+                        <i class="fa-solid fa-camera"></i> Escolher Foto do Pet
+                    </label>
+                    <input type="file" id="pet-foto-input" accept="image/*" hidden>
+                </div>
+
+                <div class="grid-form">
+                    <div class="input-group">
+                        <label for="pet-nome">Nome do Pet *</label>
+                        <input type="text" id="pet-nome" placeholder="Ex: Thor, Luna..." required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="pet-especie">Espécie *</label>
+                        <select id="pet-especie" required>
+                            <option value="" disabled selected>Selecione a espécie...</option>
+                            <option value="Cachorro">Cachorro</option>
+                            <option value="Gato">Gato</option>
+                            <option value="Coelho">Coelho</option>
+                            <option value="Hamster">Hamster</option>
+                            <option value="Outra">Outra espécie...</option>
+                        </select>
+                    </div>
+
+                    <!-- Campo condicional se escolher "Outra" -->
+                    <div class="input-group" id="grupo-outra-especie" style="display: none;">
+                        <label for="pet-outra-especie">Qual é a espécie? *</label>
+                        <input type="text" id="pet-outra-especie" placeholder="Ex: Calopsita, Tartaruga...">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="pet-raca">Raça</label>
+                        <input type="text" id="pet-raca" placeholder="Ex: Golden Retriever, SRD...">
+                    </div>
+
+                    <!-- Checkbox Animal Adotado + Tooltip ? -->
+                    <div class="input-group full-col">
+                        <div class="adotado-check-row">
+                            <input type="checkbox" id="pet-adotado">
+                            <label for="pet-adotado">Animal Adotado</label>
+                            <span class="tooltip-icon" title="Caso não saiba a data de nascimento do seu pet, marque esta opção para informar a data de resgate.">?</span>
+                        </div>
+                    </div>
+
+                    <!-- Data dinâmica (Nascimento ou Resgate) -->
+                    <div class="input-group">
+                        <label for="pet-data" id="label-data-pet">Data de Nascimento</label>
+                        <input type="date" id="pet-data" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="pet-castrado">É castrado(a)?</label>
+                        <select id="pet-castrado">
+                            <option value="Sim">Sim, é castrado(a)</option>
+                            <option value="Não">Não é castrado(a)</option>
+                        </select>
+                    </div>
+
+                    <!-- Exames já realizados + Anexo + Lista abaixo com botão Excluir -->
+                    <div class="input-group full-col">
+                        <label for="pet-exames-texto">Exames já realizados / Anexos (Opcional)</label>
+                        <div class="exame-upload-row">
+                            <input type="text" id="pet-exames-texto" placeholder="Ex: Hemograma Completo...">
+                            <label for="pet-exame-arquivo" class="btn-secondary cursor-pointer btn-anexar" id="label-btn-anexar">
+                                <i class="fa-solid fa-paperclip"></i> <span id="texto-btn-anexar">Anexar Arquivo</span>
+                            </label>
+                            <input type="file" id="pet-exame-arquivo" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" hidden>
+                            <button type="button" id="btn-adicionar-exame" class="btn-primary btn-anexar">
+                                <i class="fa-solid fa-plus"></i> Adicionar
+                            </button>
+                        </div>
+
+                        <!-- Lista dinâmica dos exames adicionados (Nome + Arquivo ao lado + Excluir) -->
+                        <div id="lista-exames-modal" class="exames-adicionados-lista"></div>
+                    </div>
+
+                    <div class="input-group full-col">
+                        <label for="pet-descricao">Descrição / Observações adicionais</label>
+                        <textarea id="pet-descricao" rows="3" placeholder="Alergias, temperamento, alimentação..."></textarea>
+                    </div>
+                </div>
+
+                <div class="modal-footer" style="display: flex; justify-content: space-between; gap: 10px; margin-top: 20px;">
+                    <button type="button" id="btn-excluir-pet" class="btn-outline" style="color: #d9534f; border-color: #d9534f; display: none;">
+                        <i class="fa-solid fa-trash"></i> Excluir Pet
+                    </button>
+                    <div style="display: flex; gap: 10px; margin-left: auto;">
+                        <button type="button" id="btn-cancelar-modal" class="btn-outline">Cancelar</button>
+                        <button type="submit" class="btn-orange">Salvar Pet</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

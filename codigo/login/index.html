@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - PetCare</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Lado Esquerdo (Idêntico ao Cadastro) -->    
+    <div id="container-esquerdo">
+        <header id="topo-esquerdo">
+            <img src="../imgs/logoIMG/logo.png" alt="logo" id="img-logo">
+            <h1><span class="cor-pet">Pet</span><span class="cor-care">Care</span></h1>
+        </header>
+
+        <div>
+            <img src="../imgs/animaisIMG/animais.png" alt="animais" id="img-animais">
+        </div> 
+
+        <div>
+            <h2>Bem-vindo ao <span class="cor-pet">Pet</span><span class="cor-care">Care</span>!</h2>
+            <p>O melhor lugar para gerenciar a saúde, vacinas e rotina de todos os seus melhores amigos em um só lugar.</p>
+        </div>
+    </div>
+
+    <!-- Lado Direito (Formulário de Login) -->    
+    <div id="container-direito">
+        <header id="topo-direito">
+            <h1>Entrar na conta</h1>
+            <p>Não tem uma conta? <a href="../cadastro/index.html" target="_self">Cadastre-se aqui</a></p>
+        </header>
+
+        <form id="formulario">
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+            </div>
+
+            <div class="form-group">
+                <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+            </div>
+
+            <p class="link-prestador"><a href="../servicos/login/index.html">Sou prestador de serviço</a></p>
+            
+            <!-- Opções extras padrão de tela de Login (Sem onclick) -->
+            <div id="opcoes-login">
+                <label for="lembrar">
+                    <input type="checkbox" id="lembrar" name="lembrar"> Lembrar de mim
+                </label>
+                <a href="#" id="esqueceu-senha">Esqueceu a senha?</a>
+            </div>
+
+            <div id="container-botao">
+                <button type="submit" id="entrar">Entrar</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

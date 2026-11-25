@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetCare - Painel do Prestador de Serviços</title>
+
+    <!-- Fonte Nunito -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Ícones FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        <!-- BARRA LATERAL ESQUERDA -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../../imgs/logoIMG/logo.png" alt="Logo PetCare" class="logo-img">
+                <h1><span class="cor-pet">Pet</span><span class="cor-care">Care</span></h1>
+            </div>
+
+            <!-- Resumo do Prestador na Sidebar -->
+            <div class="provider-sidebar-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/3774/3774299.png" alt="Logo Estabelecimento" id="sidebar-provider-avatar" class="avatar-circle-lg">
+                <span class="provider-badge-side" id="sidebar-provider-tipo">Prestador Pet</span>
+                <strong id="sidebar-provider-nome">Meu Estabelecimento</strong>
+            </div>
+
+            <!-- Menu de Navegação Lateral -->
+            <nav class="sidebar-nav">
+                <button type="button" class="nav-item active" data-target="sec-perfil-servico">
+                    <i class="fa-solid fa-store"></i> Perfil e Documentação
+                </button>
+                
+                <div class="nav-divider"></div>
+
+                <button type="button" class="nav-item" data-target="sec-config-prestador">
+                    <i class="fa-solid fa-gear"></i> Configurações da Conta
+                </button>
+            </nav>
+        </aside>
+
+        <!-- ÁREA PRINCIPAL DIREITA -->
+        <div class="main-wrapper">
+            <!-- Barra Superior -->
+            <header class="topbar">
+                <div class="topbar-title" id="titulo-pagina">Perfil e Documentação</div>
+                
+                <div class="topbar-actions">
+                    <div class="user-menu-container">
+                        <button type="button" class="user-profile-btn" id="btn-menu-usuario">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3774/3774299.png" alt="Avatar" id="header-provider-avatar" class="avatar-round-sm">
+                            <span id="header-provider-name">Prestador(a)</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        
+                        <div class="user-dropdown" id="user-dropdown">
+                            <button type="button" id="drop-config"><i class="fa-solid fa-user-gear"></i> Configurações da Conta</button>
+                            <a href="../../cadastro/termoPrivacidade/index.html" target="_blank"><i class="fa-solid fa-file-contract"></i> Termos e Condições</a>
+                            <hr>
+                            <button type="button" id="btn-sair" class="text-danger"><i class="fa-solid fa-right-from-bracket"></i> Sair da Conta</button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- CONTEÚDO PRINCIPAL -->
+            <main class="content-area">
+
+                <!-- 1. ABA: PERFIL E DOCUMENTAÇÃO REGULATÓRIA -->
+                <section id="sec-perfil-servico" class="tab-section active">
+                    <form id="form-dados-servico">
+                        
+                        <!-- Card 1: Informações Básicas e Contato -->
+                        <div class="card">
+                            <h3>Informações do Serviço / Estabelecimento</h3>
+                            <p class="subtitle">Estes dados serão exibidos quando os tutores buscarem serviços no PetCare.</p>
+
+                            <div class="provider-photo-upload">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3774/3774299.png" id="preview-foto-servico" class="avatar-round-lg" alt="Foto do Serviço">
+                                <div>
+                                    <label for="input-foto-servico" class="btn-secondary cursor-pointer">
+                                        <i class="fa-solid fa-camera"></i> Alterar Logo / Foto de Perfil
+                                    </label>
+                                    <input type="file" id="input-foto-servico" accept="image/*" hidden>
+                                </div>
+                            </div>
+
+                            <div class="grid-form">
+                                <div class="input-group">
+                                    <label for="serv-nome">Nome do Estabelecimento ou Profissional *</label>
+                                    <input type="text" id="serv-nome" placeholder="Ex: Clínica Vet Amigo" required>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="serv-modalidade">Modalidade de Atuação *</label>
+                                    <select id="serv-modalidade" required>
+                                        <option value="" disabled selected>Selecione a modalidade...</option>
+                                        <option value="Veterinário Autônomo">Veterinário Autônomo</option>
+                                        <option value="Clínica Veterinária">Clínica Veterinária</option>
+                                        <option value="Farmácia de Revenda">Farmácia Veterinária (Revenda)</option>
+                                        <option value="Farmácia de Manipulação">Farmácia Veterinária (Manipulação)</option>
+                                        <option value="Somente Pet Shop">Somente Pet Shop</option>
+                                    </select>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="serv-telefone">Telefone / WhatsApp Comercial *</label>
+                                    <input type="text" id="serv-telefone" placeholder="Ex: (32) 99999-0000" required>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="serv-cep">CEP *</label>
+                                    <input type="text" id="serv-cep" placeholder="Ex: 36000-000" required>
+                                </div>
+
+                                <div class="input-group full-col">
+                                    <label for="serv-endereco">Endereço Completo (Rua, Número, Bairro, Cidade) *</label>
+                                    <input type="text" id="serv-endereco" placeholder="Ex: Av. Rio Branco, 1200 - Centro, Juiz de Fora - MG" required>
+                                </div>
+
+                                <div class="input-group full-col">
+                                    <label for="serv-descricao">Descrição dos Serviços Oferecidos (Opcional)</label>
+                                    <textarea id="serv-descricao" rows="2" placeholder="Ex: Consultas clínicas, vacinação, banho e tosa, atendimento 24h..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Documentação Obrigatória Dinâmica -->
+                        <div class="card mt-20" id="card-documentacao">
+                            <h3>Documentação e Registros Legais</h3>
+                            <p class="subtitle" id="subtitulo-documentacao">Selecione uma modalidade acima para visualizar os documentos exigidos.</p>
+
+                            <div id="campos-dinamicos-docs" class="grid-form">
+                                <!-- Os campos são injetados dinamicamente pelo script.js conforme a modalidade -->
+                            </div>
+                        </div>
+
+                        <div class="form-actions-bar mt-20">
+                            <button type="submit" class="btn-orange btn-fit">
+                                <i class="fa-solid fa-check"></i> Salvar Dados
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+                <!-- 2. ABA: CONFIGURAÇÕES DA CONTA -->
+                <section id="sec-config-prestador" class="tab-section">
+                    <div class="card">
+                        <h3>Configurações de Acesso</h3>
+                        <form id="form-config-prestador" class="config-form">
+                            <div class="input-group">
+                                <label for="config-email">E-mail de Acesso</label>
+                                <input type="email" id="config-email" required>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="config-senha">Nova Senha (deixe em branco para manter a atual)</label>
+                                <input type="password" id="config-senha" placeholder="Digite nova senha">
+                            </div>
+
+                            <div class="config-actions">
+                                <button type="submit" class="btn-primary">Atualizar Acesso</button>
+                                <a href="../../cadastro/termoPrivacidade/index.html" target="_blank" class="btn-outline">Ler Termos e Condições</a>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
