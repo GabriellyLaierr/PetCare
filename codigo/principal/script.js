@@ -65,7 +65,6 @@ $('pet-adotado').addEventListener('change', e =>
 
 $('pet-foto-input').addEventListener('change', e => lerArquivo(e.target.files[0], url => {
     fotoPetBase64 = url;
-    $('modal-preview-pet').src = url;
 }));
 
 $('pet-exame-arquivo').addEventListener('change', e => lerArquivo(e.target.files[0], (url, nome) => {
@@ -122,7 +121,8 @@ function abrirModalPet(pet = null) {
     }
 
     $('label-data-pet').textContent = pet?.adotado ? 'Data de Resgate' : 'Data de Nascimento';
-    fotoPetBase64 = pet?.foto || '';
+    fotoPetBase64 = pet?.foto || 'https://cdn-icons-png.flaticon.com/512/616/616408.png';
+    $('modal-preview-pet').src = fotoPetBase64;
     examesTemp = pet?.exames ? [...pet.exames] : [];
     arquivoTemp = { nome: '', data: '' };
     $('texto-btn-anexar').textContent = 'Anexar Arquivo';
