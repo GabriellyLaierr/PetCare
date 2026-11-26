@@ -93,7 +93,7 @@ body {
 /* LADO DIREITO (FORMULÁRIO DE LOGIN) */
 .right-panel {
     flex: 1;
-    background-color: var(--branco);
+    background-color: var(--corFundo);
     padding: 40px;
     display: flex;
     align-items: center;
