@@ -204,6 +204,10 @@ body {
     font-size: 0.88rem;
 }
 
+.link-tutor a:hover{
+    text-decoration: underline;
+}
+
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
