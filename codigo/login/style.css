@@ -202,5 +202,5 @@ h1{
 }
 
 .link-prestador a:hover {
-    opacity: 0.8;
+    text-decoration: underline;
 }
