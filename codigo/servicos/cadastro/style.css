@@ -194,9 +194,13 @@ body {
 }
 
 .links-footer a {
-    color: var(--corPet);
+    color: var(--corCadastro);
     font-weight: 700;
     text-decoration: none;
+}
+
+.links-footer a:hover{
+    text-decoration: underline;
 }
 
 .link-tutor a {
