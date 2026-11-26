@@ -22,35 +22,47 @@
         </header>
 
         <div>
-            <p><strong>Termos de Uso e Política de Privacidade</strong></p>
+            <p class="subtitulo-termos">Termos de Uso e Política de Privacidade</p>
         </div>
 
         <section>
             <h2>1. Termos de Uso</h2>
             <p>Ao acessar e se cadastrar na plataforma <strong>PetCare</strong>, você concorda em cumprir e respeitar as condições estabelecidas nestes termos.</p>
-            <p>O PetCare é um sistema acadêmico desenvolvido para auxiliar no gerenciamento da rotina, vacinas e saúde de animais de estimação.</p>
+            <p>O PetCare é um sistema desenvolvido para auxiliar no gerenciamento da rotina, vacinas e saúde de animais de estimação, conectando tutores a serviços especializados.</p>
 
             <h2>2. Cadastro e Responsabilidade do Usuário</h2>
             <p>Para utilizar as funcionalidades do sistema, é necessário realizar um cadastro fornecendo informações válidas, como nome e e-mail.</p>
             <ul>
                 <li>O usuário é responsável por manter a confidencialidade de sua senha.</li>
+                <li>Prestadores de serviço comprometem-se a informar registros profissionais e comerciais verídicos (CNPJ, CRMV, MAPA ou Alvará).</li>
             </ul>
 
-            <h2>3. Política de Privacidade e Proteção de Dados</h2>
+            <h2>3. Planos e Monetização</h2>
+            <p>A plataforma PetCare opera com regras distintas conforme o perfil de cadastro:</p>
+            <ul>
+                <li><strong>Tutores:</strong> O cadastro e o uso de todas as ferramentas de acompanhamento do pet são <strong>gratuitos</strong>.</li>
+                <li><strong>Prestadores de Serviço:</strong> Clínicas veterinárias, farmácias e pet shops pagam uma <strong>assinatura mensal</strong> para manter o estabelecimento ativo e visível na busca para os tutores.</li>
+            </ul>
+
+            <h2>4. Política de Privacidade e Proteção de Dados</h2>
             <p>A sua privacidade é importante para nós. Esta política descreve como coletamos e armazenamos suas informações:</p>
             <ul>
-                <li><strong>Coleta de Dados:</strong> Coletamos apenas as informações fornecidas voluntariamente no cadastro (Nome, E-mail e dados cadastrados dos seus pets).</li>
-                <li><strong>Uso das Informações:</strong> Os dados são utilizados exclusivamente para permitir o acesso à sua conta e personalizar a exibição dos seus animais de estimação.</li>
-                <li><strong>Compartilhamento:</strong> O PetCare não vende, aluga ou compartilha seus dados pessoais com terceiros.</li>
+                <li><strong>Coleta de Dados:</strong> Coletamos apenas as informações fornecidas voluntariamente no cadastro (Nome, E-mail, dados dos pets e dados comerciais dos parceiros).</li>
+                <li><strong>Uso das Informações:</strong> Os dados são utilizados exclusivamente para permitir o acesso à sua conta e personalizar a exibição dos seus animais de estimação e serviços.</li>
+                <li><strong>Compartilhamento:</strong> O PetCare não vende, aluga ou compartilha dados pessoais dos tutores com terceiros.</li>
             </ul>
 
-            <h2>4. Projeto Acadêmico</h2>
-            <p>Este site foi desenvolvido como um trabalho universitário. </p>
+            <h2>5. Projeto Acadêmico</h2>
+            <p>Este site foi desenvolvido como um trabalho universitário.</p>
 
-            <div style="text-align: center;">
-                <a href="javascript:window.close();" class="btn-voltar">Fechar Página</a>
+            <div class="fechar-container">
+                <button type="button" class="btn-voltar" id="btn-fechar-termos">Fechar Página</button>
             </div>
         </section>
     </div>
+
+    <script>
+        document.getElementById('btn-fechar-termos').addEventListener('click', () => window.close());
+    </script>
 </body>
 </html>
