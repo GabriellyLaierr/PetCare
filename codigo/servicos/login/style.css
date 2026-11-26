@@ -147,7 +147,7 @@ body {
 .btn-primary {
     width: 100%;
     height: 48px;
-    background-color: var(--corPet);
+    background-color: #FE802C;
     color: var(--branco);
     border: none;
     border-radius: 50px;
@@ -155,11 +155,11 @@ body {
     font-weight: 700;
     cursor: pointer;
     margin-top: 8px;
-    transition: background 0.2s;
+    transition: opacity 0.2s;
 }
 
 .btn-primary:hover {
-    background-color: var(--corVerdeEscuro);
+    opacity: 0.9;
 }
 
 .links-footer {
