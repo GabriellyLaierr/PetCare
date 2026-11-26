@@ -21,6 +21,7 @@ body {
     min-height: 100vh;
     width: 100%;
     display: flex;
+    overflow-x: hidden;
 }
 
 .container {
@@ -29,48 +30,67 @@ body {
     min-height: 100vh;
 }
 
-/* LADO ESQUERDO (50% DA TELA) */
+/* LADO ESQUERDO (IDÊNTICO AO TUTOR) */
 .left-panel {
     flex: 1;
     background-color: var(--corTopoClaro);
-    padding: 40px;
+    padding-top: 60px;
+    padding-bottom: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     text-align: center;
 }
 
 .brand {
+    width: 100%;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .logo-img {
-    height: 110px;
+    height: 125px;
     width: auto;
-    margin-right: -52px;
+    margin-right: -75px;
 }
 
 .brand h1 {
+    line-height: 1;
+    margin: 0;
+    padding: 0;
     font-size: 2.8rem;
     font-weight: 800;
+    margin-right: 125px;
 }
 
 .cor-pet { color: var(--corPet); }
 .cor-care { color: var(--corCare); }
 
-.slogan {
-    color: var(--corVerdeEscuro);
-    font-size: 1.15rem;
-    font-weight: 600;
-    line-height: 1.5;
-    max-width: 380px;
+.img-animais {
+    max-width: 100%;
+    height: 300px;
+    margin-bottom: 15px;
 }
 
-/* LADO DIREITO (50% DA TELA) */
+.brand-text h2 {
+    color: var(--corVerdeEscuro);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.brand-text p {
+    color: var(--corVerdeEscuro);
+    line-height: 1.6;
+    max-width: 280px;
+    margin: 0 auto;
+    font-size: 1rem;
+}
+
+/* LADO DIREITO (FORMULÁRIO DE CADASTRO) */
 .right-panel {
     flex: 1;
     background-color: var(--branco);
@@ -190,5 +210,11 @@ body {
     }
     .left-panel, .right-panel {
         padding: 35px 20px;
+    }
+    .brand h1 {
+        margin-right: 0;
+    }
+    .logo-img {
+        margin-right: -35px;
     }
 }
