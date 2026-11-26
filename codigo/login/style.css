@@ -117,7 +117,7 @@ h1{
 }
 
 #topo-direito a{
-    color: var(--corCare);
+    color: var(--corCadastro);
     text-decoration: none;
     font-weight: 600;
 }
@@ -145,22 +145,14 @@ h1{
     outline: none;
 }
 
-/* Linha de Lembrar / Esqueceu a senha */
+/* Link Esqueceu a senha */
 #opcoes-login {
     width: 300px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     font-size: 0.85rem;
     color: var(--corVerdeEscuro);
-    padding: 0 10px;
-}
-
-#opcoes-login label {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    cursor: pointer;
 }
 
 #opcoes-login a {
@@ -196,7 +188,7 @@ h1{
     transform: translateY(1px); 
 }
 
-/*Prestador de Serviço */
+/* Prestador de Serviço */
 .link-prestador {
     text-align: center;
     margin-top: 12px;
